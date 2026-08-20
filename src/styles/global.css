@@ -1,0 +1,694 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap');
+
+:root {
+  /* --- Nori Coffee color tokens (derived from the logo: cream, coffee brown, tan, black ink) --- */
+  --nori-cream: #F7F1E6;
+  --nori-cream-soft: #FBF7EF;
+  --nori-card: #FDFAF3;
+  --nori-tan: #D8BE96;
+  --nori-tan-soft: #EADFC7;
+  --nori-coffee: #4A2E1E;
+  --nori-coffee-deep: #2E1B10;
+  --nori-coffee-mid: #7A4B30;
+  --nori-ink: #241610;
+  --nori-gold: #B4813C;
+  --nori-success: #5C7A4F;
+  --nori-error: #A2422C;
+  --nori-border: rgba(74, 46, 30, 0.16);
+  --nori-shadow: 0 8px 24px rgba(46, 27, 16, 0.10);
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-hand: 'Caveat', cursive;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--nori-cream);
+  color: var(--nori-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root { min-height: 100vh; display: flex; flex-direction: column; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--nori-coffee-deep);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+a { color: inherit; text-decoration: none; }
+
+button { font-family: var(--font-body); cursor: pointer; }
+
+img { max-width: 100%; display: block; }
+
+.container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* signature element: a hand-drawn steam / coffee-ring squiggle used as a divider */
+.nori-squiggle {
+  display: block;
+  width: 84px;
+  height: 20px;
+  color: var(--nori-gold);
+}
+
+.nori-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.nori-btn:active { transform: scale(0.97); }
+.nori-btn:focus-visible {
+  outline: 3px solid var(--nori-gold);
+  outline-offset: 2px;
+}
+
+.nori-btn-primary {
+  background: var(--nori-coffee);
+  color: var(--nori-cream-soft);
+}
+.nori-btn-primary:hover { background: var(--nori-coffee-deep); box-shadow: var(--nori-shadow); }
+.nori-btn-primary:disabled { background: #b7a596; cursor: not-allowed; }
+
+.nori-btn-secondary {
+  background: transparent;
+  color: var(--nori-coffee);
+  border: 1.5px solid var(--nori-coffee);
+}
+.nori-btn-secondary:hover { background: var(--nori-tan-soft); }
+
+.nori-btn-danger {
+  background: var(--nori-error);
+  color: #fff;
+}
+.nori-btn-danger:hover { background: #832f1e; }
+
+.nori-btn-ghost {
+  background: transparent;
+  color: var(--nori-coffee-mid);
+  padding: 8px 12px;
+}
+.nori-btn-ghost:hover { background: var(--nori-tan-soft); }
+
+.nori-card {
+  background: var(--nori-card);
+  border: 1px solid var(--nori-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--nori-shadow);
+}
+
+.nori-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1.5px solid var(--nori-border);
+  background: #fff;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--nori-ink);
+}
+.nori-input:focus {
+  outline: none;
+  border-color: var(--nori-gold);
+  box-shadow: 0 0 0 3px rgba(180, 129, 60, 0.18);
+}
+
+.nori-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--nori-coffee-mid);
+  margin-bottom: 6px;
+}
+
+.nori-eyebrow {
+  font-family: var(--font-hand);
+  font-size: 1.3rem;
+  color: var(--nori-gold);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.nori-tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: var(--nori-tan-soft);
+  color: var(--nori-coffee-deep);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.nori-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-pill);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.status-placed { background: #EFE3CE; color: #7A5A24; }
+.status-preparing { background: #F0DCC8; color: #8A4A1E; }
+.status-out { background: #E4D9C4; color: var(--nori-coffee-deep); }
+.status-delivered { background: #DCE7D3; color: var(--nori-success); }
+
+.nori-empty {
+  text-align: center;
+  padding: 64px 24px;
+  color: var(--nori-coffee-mid);
+}
+
+.nori-spinner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid var(--nori-tan-soft);
+  border-top-color: var(--nori-coffee);
+  animation: nori-spin 0.7s linear infinite;
+}
+@keyframes nori-spin { to { transform: rotate(360deg); } }
+
+.nori-alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  margin-bottom: 16px;
+}
+.nori-alert-error { background: #FBE7E1; color: var(--nori-error); border: 1px solid #F0C6B9; }
+.nori-alert-success { background: #E5EEE0; color: var(--nori-success); border: 1px solid #C6DDBB; }
+
+::selection { background: var(--nori-tan); color: var(--nori-coffee-deep); }
+
+/* ----------------------------------------------------------------------- */
+/* Shared modal shell (drink customization, admin dialogs)                 */
+/* ----------------------------------------------------------------------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(36, 22, 16, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+.modal-panel {
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+}
+@media (max-width: 480px) {
+  .modal-panel { padding: 20px; border-radius: var(--radius-md); }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Drink customization modal (size / sugar level picker)                   */
+/* ----------------------------------------------------------------------- */
+.drink-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.drink-modal-image {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  object-fit: cover;
+  background: var(--nori-tan-soft);
+  flex-shrink: 0;
+}
+.option-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.option-pill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 10px 14px;
+  min-width: 64px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--nori-border);
+  background: #fff;
+  color: var(--nori-coffee-deep);
+  font-family: var(--font-body);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.option-pill:hover { border-color: var(--nori-gold); }
+.option-pill.is-selected {
+  border-color: var(--nori-coffee);
+  background: var(--nori-tan-soft);
+}
+.drink-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.qty-btn {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Payment method selector (Checkout)                                      */
+/* ----------------------------------------------------------------------- */
+.payment-method-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.payment-method-card {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--nori-border);
+  background: #fff;
+  text-align: left;
+  font-family: var(--font-body);
+}
+.payment-method-card:hover { border-color: var(--nori-gold); }
+.payment-method-card.is-selected {
+  border-color: var(--nori-coffee);
+  background: var(--nori-tan-soft);
+}
+
+/* ----------------------------------------------------------------------- */
+/* Responsive data tables (admin) — scroll horizontally within their own   */
+/* container instead of ever causing the page itself to scroll sideways.   */
+/* ----------------------------------------------------------------------- */
+.nori-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.nori-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Product image containers — fixed aspect ratio, never stretched          */
+/* ----------------------------------------------------------------------- */
+.nori-thumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--nori-tan-soft);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+.nori-thumb img {
+  /* `contain` (not `cover`) so the whole product photo is always visible —
+     no cropping/zooming — regardless of its original aspect ratio. The
+     `.nori-thumb` background fills any leftover space around the image. */
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+.nori-preview-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  background: var(--nori-tan-soft);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.nori-preview-box img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Cart item row — wraps to a two-line layout on narrow screens            */
+/* ----------------------------------------------------------------------- */
+.cart-item-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--nori-border);
+  flex-wrap: wrap;
+}
+.cart-item-thumb {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+@media (max-width: 560px) {
+  .cart-item-row { gap: 12px; }
+  .cart-item-controls {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    padding-left: 80px; /* aligns under the name, past the thumbnail */
+  }
+}
+@media (max-width: 380px) {
+  .cart-item-controls { padding-left: 0; }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Payment receipt upload (Checkout — Online Payment)                      */
+/* ----------------------------------------------------------------------- */
+.receipt-upload {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--nori-border);
+  text-align: left;
+}
+.receipt-upload-dropzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 24px 16px;
+  border: 1.5px dashed var(--nori-border);
+  border-radius: var(--radius-md);
+  background: var(--nori-cream);
+  color: var(--nori-coffee-mid);
+  text-align: center;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.receipt-upload-dropzone:hover,
+.receipt-upload-dropzone:focus-visible {
+  border-color: var(--nori-gold);
+  background: var(--nori-tan-soft);
+}
+.receipt-upload-dropzone svg { width: 26px; height: 26px; opacity: 0.7; }
+.receipt-upload-hint { font-size: 0.78rem; }
+.receipt-preview-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--nori-border);
+  background: var(--nori-cream);
+}
+.receipt-preview-thumb {
+  width: 72px;
+  height: 72px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+.receipt-preview-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.receipt-preview-info { flex: 1; min-width: 0; }
+.receipt-preview-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--nori-coffee-deep);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .receipt-preview-card { flex-wrap: wrap; }
+}
+
+/* Admin: enlargeable receipt thumbnail on the order detail panel */
+.receipt-admin-thumb {
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+  border: 1px solid var(--nori-border);
+  cursor: zoom-in;
+  overflow: hidden;
+  background: var(--nori-tan-soft);
+}
+.receipt-admin-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ----------------------------------------------------------------------- */
+/* Admin shell — sidebar persists on desktop/tablet, becomes a hamburger-  */
+/* triggered slide-in drawer on mobile.                                    */
+/* ----------------------------------------------------------------------- */
+.admin-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-topbar {
+  display: none; /* shown only on mobile, see breakpoint below */
+}
+
+.admin-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+  min-height: 100vh;
+  background: var(--nori-coffee-deep);
+  color: var(--nori-cream-soft);
+  display: flex;
+  flex-direction: column;
+  padding: 28px 18px;
+}
+
+.admin-sidebar-backdrop {
+  display: none;
+}
+
+.admin-main {
+  flex: 1;
+  min-width: 0; /* let tables/content shrink instead of forcing page-level overflow */
+  background: var(--nori-cream);
+  padding: 32px 40px;
+}
+
+@media (max-width: 767.98px) {
+  .admin-shell {
+    flex-direction: column;
+  }
+
+  .admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    background: var(--nori-cream-soft);
+    border-bottom: 1px solid var(--nori-border);
+    position: sticky;
+    top: 0;
+    z-index: 210;
+  }
+
+  .admin-topbar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .admin-topbar-toggle:hover,
+  .admin-topbar-toggle:focus-visible {
+    background: var(--nori-tan-soft);
+  }
+
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 220;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    box-shadow: var(--nori-shadow);
+  }
+  .admin-sidebar.is-open {
+    transform: translateX(0);
+  }
+
+  .admin-sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(36, 22, 16, 0.4);
+    z-index: 215;
+  }
+
+  .admin-main {
+    padding: 24px 18px;
+  }
+}
+
+@media (max-width: 420px) {
+  .admin-main { padding: 20px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ----------------------------------------------------------------------- */
+/* Site footer — 4 columns (Nori Coffee / Follow Us / Customer Services /   */
+/* Contact Us) on desktop, 2 on tablet, stacked on mobile.                  */
+/* ----------------------------------------------------------------------- */
+.site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--nori-border);
+  background: var(--nori-cream-soft);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr 1.2fr;
+  gap: 36px;
+  padding: 44px 24px 40px;
+}
+
+.footer-col { min-width: 0; }
+
+.footer-logo-wrap { margin-bottom: 10px; }
+.footer-logo {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+}
+.footer-tagline {
+  font-family: var(--font-hand);
+  font-size: 1.25rem;
+  color: var(--nori-coffee);
+  margin: 0;
+}
+
+.footer-heading {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--nori-coffee-deep);
+  margin: 0 0 16px;
+}
+
+.footer-link-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.footer-link {
+  font-size: 0.9rem;
+  color: var(--nori-coffee-mid);
+  transition: color 0.15s ease;
+}
+.footer-link:hover,
+.footer-link:focus-visible { color: var(--nori-coffee-deep); }
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  word-break: break-word;
+}
+.footer-contact-link svg { flex-shrink: 0; }
+
+.footer-social-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.footer-social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-pill);
+  background: var(--nori-tan-soft);
+  color: var(--nori-coffee-deep);
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+.footer-social-icon:hover,
+.footer-social-icon:focus-visible {
+  background: var(--nori-gold);
+  color: var(--nori-cream-soft);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    row-gap: 32px;
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 36px 24px 24px;
+    text-align: left;
+  }
+}

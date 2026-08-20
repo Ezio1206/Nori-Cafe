@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <rect width="400" height="300" fill="#EADFC7"/>
+  <g fill="none" stroke="#7A4B30" stroke-width="4" stroke-linecap="round">
+    <path d="M140 110h100l-8 100a20 20 0 0 1-20 18h-44a20 20 0 0 1-20-18z"/>
+    <path d="M240 120h18a20 20 0 0 1 0 40h-14"/>
+    <path d="M165 85c-6-10 6-14 0-24"/>
+    <path d="M190 85c-6-10 6-14 0-24"/>
+    <path d="M215 85c-6-10 6-14 0-24"/>
+  </g>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="16" fill="#7A4B30" text-anchor="middle">Photo coming soon</text>
+</svg>
